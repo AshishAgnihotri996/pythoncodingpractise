@@ -135,32 +135,32 @@
 import collections
 import heapq
 from collections import defaultdict
-
-class Solution:
-    def networkdelay(self,time:list[list[int]],N,k):
-        g = collections.defaultdict(list)
-
-        for u,v,cost in time:
-            g[u].append(cost,v)
-
-        min_heap = [(0,k)]
-        visited = set()
-        i = 0
-        distace= {i:(float('inf') for i in range(1,N+1))}
-
-        distace[k] = 0
-
-        while min_heap:
-            cur_distance, u = heapq.heappop(min_heap)
-            if u in visited:
-                continue
-            visited.add(u)
-
-            if len(visited)==N:
-                return cur_distance
-
-            for direct_distance, v in g[u]:
-                if cur_distance + direct_distance < distace[v] and v not in distace:
-                    distace[v] = cur_distance + direct_distance
-                    heapq.heappush(min_heap,(direct_distance[v],v))
-        return -1
+#
+# class Solution:
+#     def networkdelay(self,time:list[list[int]],N,k):
+#         g = collections.defaultdict(list)
+#
+#         for u,v,cost in time:
+#             g[u].append(cost,v)
+#
+#         min_heap = [(0,k)]
+#         visited = set()
+#         i = 0
+#         distace= {i:(float('inf') for i in range(1,N+1))}
+#
+#         distace[k] = 0
+#
+#         while min_heap:
+#             cur_distance, u = heapq.heappop(min_heap)
+#             if u in visited:
+#                 continue
+#             visited.add(u)
+#
+#             if len(visited)==N:
+#                 return cur_distance
+#
+#             for direct_distance, v in g[u]:
+#                 if cur_distance + direct_distance < distace[v] and v not in distace:
+#                     distace[v] = cur_distance + direct_distance
+#                     heapq.heappush(min_heap,(direct_distance[v],v))
+#         return -1
