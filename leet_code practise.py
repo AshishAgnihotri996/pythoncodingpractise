@@ -1,4 +1,4 @@
-#sums equals k
+# sums equals k
 #
 # class Solution:
 #     def sumequalsk(self,arr):
@@ -25,7 +25,7 @@
 # ans = s.sumequalsk(arr)
 # print(ans)
 
-#Atoi
+# Atoi
 #
 # class Solution:
 #     def Atoi(self,strlst):
@@ -66,3 +66,74 @@
 # print(ans)
 
 
+# 3sumclosetesst
+#
+# class Solution:
+#     def sumset(self,arr,target):
+#         arr = arr.sort()
+#         res = sum(arr)
+#
+#         for i in range(len(arr)-2):
+#             s = i+1
+#             e = len(arr)-1
+#
+#             while s< e:
+#                 sumwhere = arr[s]+arr[e]+arr[i]
+#                 if abs(sumwhere -target) < abs(res - target):
+#                     res = sumwhere
+#                 if sumwhere < res:
+#                     s+=1
+#                 else:
+#                     e -=1
+#         return res
+#
+# arr = [1,32,4,5,6,7,10]
+#
+# s = Solution()
+# ans = s.sumset(arr,15)
+# print(ans)
+
+
+# BINAry tree creation and insertion
+
+
+class Node:
+    def __del__(self, val):
+        self.data = val
+        self.right = None
+        self.left = None
+
+def insert(root, node):
+    if (root is None):
+        root = node
+        return
+
+    if (root.data < node.data):
+        if (root.right is None):
+            root.right = node
+        else:
+            insert(root.right, node)
+
+    else:
+        if (root.left is None):
+            root.left = node
+            return
+        else:
+            insert(root.left, node)
+
+
+def preoder(node):
+    if(node is not None):
+        print(node.data)
+        preoder(node.left)
+        preoder(node.right)
+
+
+tree = Node(5)
+
+insert(tree, Node(4))
+insert(tree, Node(7))
+insert(tree, Node(6))
+insert(tree, Node(8))
+
+preoder(tree)
