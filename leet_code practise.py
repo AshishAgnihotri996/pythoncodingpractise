@@ -97,43 +97,96 @@
 # BINAry tree creation and insertion
 
 
-class Node:
-    def __del__(self, val):
-        self.data = val
-        self.right = None
-        self.left = None
+# class Node:
+#     def __del__(self, val):
+#         self.data = val
+#         self.right = None
+#         self.left = None
+#
+# def insert(root, node):
+#     if (root is None):
+#         root = node
+#         return
+#
+#     if (root.data < node.data):
+#         if (root.right is None):
+#             root.right = node
+#         else:
+#             insert(root.right, node)
+#
+#     else:
+#         if (root.left is None):
+#             root.left = node
+#             return
+#         else:
+#             insert(root.left, node)
+#
+#
+# def preoder(node):
+#     if(node is not None):
+#         print(node.data)
+#         preoder(node.left)
+#         preoder(node.right)
+#
+#
+# tree = Node(5)
+#
+# insert(tree, Node(4))
+# insert(tree, Node(7))
+# insert(tree, Node(6))
+# insert(tree, Node(8))
+#
+# preoder(tree)
 
-def insert(root, node):
-    if (root is None):
-        root = node
-        return
+#
+# class Node:
+#     def __int__(self,value):
+#         self.left = None
+#         self.right = None
+#         self.data = value
+#
+#
+# def insert(root,node):
+#     if (root is None):
+#         root= node
+#         return
+#     if root.data > node.data:
+#         if (root.right is None):
+#             root.right = Node
+#         else:
+#             insert(root.right,node)
+#     else:
+#         if (root.left is None):
+#             root.left = Node
+#         else:
+#             insert(root.left, node)
+#
+# def serach(node,key):
+#     print('current node is',node.data)
+#
+#     if node is None:
+#         print('no data found')
+#         return
+#     else:
+#         if node.data == key:
+#             print('node found')
+#             return node
+#
+#     if node.data < key:
+#         return serach(node.right,key)
+#     return serach(node.left,key)
+#
+# t = Node(5)
 
-    if (root.data < node.data):
-        if (root.right is None):
-            root.right = node
-        else:
-            insert(root.right, node)
+#asymertric tree
+# class Solution:
+#     def is_mirror(self,t1,t2):
+#         if (t1 is None and t2 is None):
+#             return True
+#         if t1 is None and t2 is None:
+#             return False
+#         return (t1.val == t2.val) and self.is_mirror(t1.right,t2.left) and self.is_mirror(t1.left,t2.right)
+#
+#     def isSymmetric(self,root:TreeNode)->bool:
+#         return self.is_mirror(root,root)
 
-    else:
-        if (root.left is None):
-            root.left = node
-            return
-        else:
-            insert(root.left, node)
-
-
-def preoder(node):
-    if(node is not None):
-        print(node.data)
-        preoder(node.left)
-        preoder(node.right)
-
-
-tree = Node(5)
-
-insert(tree, Node(4))
-insert(tree, Node(7))
-insert(tree, Node(6))
-insert(tree, Node(8))
-
-preoder(tree)

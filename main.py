@@ -52,7 +52,7 @@
 #     while l <= r:
 #         mid = (l + r) // 2
 #         if key==arr[i]:
-#             return i-+
+#             return i-=1
 
 #         elif key < arr[i]:
 #             r = mid-1
