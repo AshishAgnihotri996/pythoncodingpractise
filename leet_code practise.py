@@ -194,5 +194,33 @@
 #longest common subsequence
 
 
+#20 random pick with weight
+import random
+
+
+class Solution:
+    def __init__(self,w):
+        self.prefix_sum = []
+        prefix_sum = 0
+        for weight in w:
+            self.prefix_sum += weight
+            self.prefix_sum.append(prefix_sum)
+        self.total_sum = prefix_sum
+
+
+    def pickIndex(self)->int:
+        random_num = self.total_sum *random.random()
+        low = 0
+        high = len(self.prefix_sum)
+        while low < high:
+            mid = (low+high)//2
+            if random_num > self.prefix_sum:
+                l = mid+1
+            else:
+                high = mid
+        return low
+
+
+
 
 
