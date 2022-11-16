@@ -195,31 +195,76 @@
 
 
 #20 random pick with weight
-import random
+# import random
+#
+#
+# class Solution:
+#     def __init__(self,w):
+#         self.prefix_sum = []
+#         prefix_sum = 0
+#         for weight in w:
+#             self.prefix_sum += weight
+#             self.prefix_sum.append(prefix_sum)
+#         self.total_sum = prefix_sum
+#
+#
+#     def pickIndex(self)->int:
+#         random_num = self.total_sum *random.random()
+#         low = 0
+#         high = len(self.prefix_sum)
+#         while low < high:
+#             mid = (low+high)//2
+#             if random_num > self.prefix_sum:
+#                 l = mid+1
+#             else:
+#                 high = mid
+#         return low
 
+#maximum sum circular subaarray
+
+
+# class Solution:
+#
+#     def maxsubarrayCircular(self,A):
+#         k = self.kadane(A)
+#         cs = 0
+#         for i in range(len(A)):
+#             cs+=A[i]
+#             A[i] = -A[i]
+#         cs = cs + self.kadane(A)
+#
+#         if cs > k and cs!= 0 :
+#             return cs
+#         else:
+#             return k
+#
+#
+#     def kadane(self,nums):
+#         cursum,maxsum = nums[0],nums[0]
+#
+#         for n in nums[1:]:
+#             cursum = max(n,cursum+n)
+#             maxsum = max(cursum,maxsum)
+#         return maxsum
+
+#count square submartrices wih all ones leletcode
 
 class Solution:
-    def __init__(self,w):
-        self.prefix_sum = []
-        prefix_sum = 0
-        for weight in w:
-            self.prefix_sum += weight
-            self.prefix_sum.append(prefix_sum)
-        self.total_sum = prefix_sum
+    def countSquare(self,matrix):
+        n = len(matrix)
+        m = len(matrix[0])
 
+        ansMatrix = [[0]*(m+n) for _ in range(n+1)]
+        count= 0
 
-    def pickIndex(self)->int:
-        random_num = self.total_sum *random.random()
-        low = 0
-        high = len(self.prefix_sum)
-        while low < high:
-            mid = (low+high)//2
-            if random_num > self.prefix_sum:
-                l = mid+1
-            else:
-                high = mid
-        return low
+        for row in range(1,n+1):
+            for col in range(1,m+1):
+                if matrix[row-1][col-1]==1
+                    ansMatrix[row][col] = 1+min(ansMatrix[row][col-1],ansMatrix[row-1][col],ansMatrix[row][col])
+                    count+=ansMatrix[row][col]
+                    print(count)
 
+        return count
 
 
 
