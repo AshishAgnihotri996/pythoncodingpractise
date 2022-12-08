@@ -248,23 +248,211 @@
 #         return maxsum
 
 #count square submartrices wih all ones leletcode
+#
+# class Solution:
+#     def countSquare(self,matrix):
+#         n = len(matrix)
+#         m = len(matrix[0])
+#
+#         ansMatrix = [[0]*(m+n) for _ in range(n+1)]
+#         count= 0
+#
+#         for row in range(1,n+1):
+#             for col in range(1,m+1):
+#                 if matrix[row-1][col-1]==1
+#                     ansMatrix[row][col] = 1+min(ansMatrix[row][col-1],ansMatrix[row-1][col],ansMatrix[row][col])
+#                     count+=ansMatrix[row][col]
+#                     print(count)
+#
+#         return count
 
+
+# intersection of two array II
+# class Solution:
+#     def intersectionArraY(self,l1,l2):
+#         l1.sort()
+#         l2.sort()
+#         result = []
+#         i = 0
+#         j = 0
+#
+#         while i < len(l1) and j < len(l2):
+#             if l1[i] == l2[j]:
+#                 result.append(l1[i])
+#                 i +=1
+#                 j +=1
+#             elif l1[i] < l2[j]:
+#                 i+=1
+#             else:
+#                 j+=1
+#         return result
+
+
+# merged k sorted list
+
+# Python3 program to merge k sorted
+# arrays of size n each
+
+# A Linked List node
+# class Node:
+#
+# 	def __init__(self):
+#
+# 		self.data = 0
+# 		self.next = None
+#
+# # Function to print nodes in a
+# # given linked list
+# def printList(node):
+#
+# 	while (node != None):
+# 		print(node.data, end=' ')
+# 		node = node.next
+
+# Takes two lists sorted in increasing order,
+# and merge their nodes together to make one
+# big sorted list. Below function takes
+# O(Log n) extra space for recursive calls,
+# but it can be easily modified to work with
+# same time and O(1) extra space
+# def SortedMerge(a, b):
+#
+# 	result = None
+#
+# 	# Base cases
+# 	if (a == None):
+# 		return(b)
+# 	elif (b == None):
+# 		return(a)
+#
+# 	# Pick either a or b, and recur
+# 	if (a.data <= b.data):
+# 		result = a
+# 		result.next = SortedMerge(a.next, b)
+# 	else:
+# 		result = b
+# 		result.next = SortedMerge(a, b.next)
+#
+# 	return result
+#
+# # The main function that takes an array of lists
+# # arr[0..last] and generates the sorted output
+# def mergeKLists(arr, last):
+#
+# 	# Repeat until only one list is left
+# 	while (last != 0):
+# 		i = 0
+# 		j = last
+#
+# 		# (i, j) forms a pair
+# 		while (i < j):
+#
+# 			# Merge List i with List j and store
+# 			# merged list in List i
+# 			arr[i] = SortedMerge(arr[i], arr[j])
+#
+# 			# Consider next pair
+# 			i += 1
+# 			j -= 1
+#
+# 			# If all pairs are merged, update last
+# 			if (i >= j):
+# 				last = j
+#
+# 	return arr[0]
+#
+# # Utility function to create a new node.
+# def newNode(data):
+#
+# 	temp = Node()
+# 	temp.data = data
+# 	temp.next = None
+# 	return temp
+#
+#
+# # Driver code
+# if __name__ == '__main__':
+#
+# 	# Number of linked lists
+# 	k = 3
+#
+# 	# Number of elements in each list
+# 	n = 4
+#
+# 	# An array of pointers storing the
+# 	# head nodes of the linked lists
+# 	arr = [0 for i in range(k)]
+#
+# 	arr[0] = newNode(1)
+# 	arr[0].next = newNode(3)
+# 	arr[0].next.next = newNode(5)
+# 	arr[0].next.next.next = newNode(7)
+#
+# 	arr[1] = newNode(2)
+# 	arr[1].next = newNode(4)
+# 	arr[1].next.next = newNode(6)
+# 	arr[1].next.next.next = newNode(8)
+#
+# 	arr[2] = newNode(0)
+# 	arr[2].next = newNode(9)
+# 	arr[2].next.next = newNode(10)
+# 	arr[2].next.next.next = newNode(11)
+#
+# 	# Merge all lists
+# 	head = mergeKLists(arr, k - 1)
+#
+# 	printList(head)
+
+
+# Search in Rotated Sorted Array python
+
+# class Solution:
+#     def search(self,arr,target):
+#         if arr is None:
+#             return -1
+#         low = 0
+#         high = len(arr)-1
+#         mid = (low+high)//2
+# 
+#         while low < high:
+#             if target ==arr[mid]:
+#                 return mid
+# 
+#             if arr[low]<=arr[mid]:
+#                 if arr[low] <= target <= arr[mid]:
+#                     high = mid-1
+#                 else:
+#                     low = mid+1
+#             else:
+#                 if arr[mid] <= target < arr[high]:
+#                     low = mid+1
+#                 else:
+#                     high = mid-1
+#             return -1
+
+#the maze
 class Solution:
-    def countSquare(self,matrix):
-        n = len(matrix)
-        m = len(matrix[0])
+    def dfs(self,maze,start,destination):
+        n = len(maze)
+        m = len(maze[0])
+        visited = set()
+        def dfs(x,y):
+            if (x,y) not in visited:
+                visited.add((x,y))
+            else:
+                return False
+            for i,j in (0,-1),(0,1),(-1,0),(1,0):
+                new_X ,new_Y = x,y
+                while 0 <= new_X+i < m and 0 <= new_Y+j <n and maze[new_X+i][new_Y+j]!= 1:
+                    new_X+=i
+                    new_Y+=j
+                if dfs(new_X,new_Y):
+                    return True
+            return False
+        return (dfs(start))
 
-        ansMatrix = [[0]*(m+n) for _ in range(n+1)]
-        count= 0
 
-        for row in range(1,n+1):
-            for col in range(1,m+1):
-                if matrix[row-1][col-1]==1
-                    ansMatrix[row][col] = 1+min(ansMatrix[row][col-1],ansMatrix[row-1][col],ansMatrix[row][col])
-                    count+=ansMatrix[row][col]
-                    print(count)
 
-        return count
 
 
 
