@@ -431,25 +431,25 @@
 #             return -1
 
 #the maze
-class Solution:
-    def dfs(self,maze,start,destination):
-        n = len(maze)
-        m = len(maze[0])
-        visited = set()
-        def dfs(x,y):
-            if (x,y) not in visited:
-                visited.add((x,y))
-            else:
-                return False
-            for i,j in (0,-1),(0,1),(-1,0),(1,0):
-                new_X ,new_Y = x,y
-                while 0 <= new_X+i < m and 0 <= new_Y+j <n and maze[new_X+i][new_Y+j]!= 1:
-                    new_X+=i
-                    new_Y+=j
-                if dfs(new_X,new_Y):
-                    return True
-            return False
-        return (dfs(start))
+# class Solution:
+#     def dfs(self,maze,start,destination):
+#         n = len(maze)
+#         m = len(maze[0])
+#         visited = set()
+#         def dfs(x,y):
+#             if (x,y) not in visited:
+#                 visited.add((x,y))
+#             else:
+#                 return False
+#             for i,j in (0,-1),(0,1),(-1,0),(1,0):
+#                 new_X ,new_Y = x,y
+#                 while 0 <= new_X+i < m and 0 <= new_Y+j <n and maze[new_X+i][new_Y+j]!= 1:
+#                     new_X+=i
+#                     new_Y+=j
+#                 if dfs(new_X,new_Y):
+#                     return True
+#             return False
+#         return (dfs(start))
 
 
 
